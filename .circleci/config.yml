@@ -74,7 +74,9 @@ jobs:
           name: Run Jasmine Tests
           command: |
             mkdir -p ~/jasmineTestResults
-            sfdx force:lightning:test:run -a jasmineTests.app  -d ~/jasmineTestResults -r junit --wait 5 
+            sfdx force:lightning:test:run -a jasmineTests.app  -d ~/jasmineTestResults -r junit --wait 5
+      - store_test_reulsts:
+          path: ~/jasmineTestResults 
       - run:
           name: Delete Useless Scratch Org
           command: |
