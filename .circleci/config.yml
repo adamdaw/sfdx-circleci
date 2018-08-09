@@ -15,14 +15,16 @@ jobs:
       # from https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli_standalone.htm
       # and https://developer.salesforce.com/media/salesforce-cli/manifest.json
       - DX_CLI_URL: https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
-    dependencies:
-      override:
-        #new chromedriver
-        - wget https://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
-        - unzip chromedriver_linux64.zip
-        - sudo cp chromedriver /usr/local/bin/chromedriver
-    steps:
+   steps:
       - checkout
+      - run:
+          name: Update chromedriver
+          command: |
+            mkdir -p chromedriverdownload
+            wget https://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip
+            sudo cp chromedriver /usr/local/bin/chromedriver
+ 
       - run:
           name: Download CLI
           command: |
