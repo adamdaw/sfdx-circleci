@@ -25,6 +25,11 @@ jobs:
             unzip chromedriver_linux64.zip
             sudo cp chromedriver /usr/local/bin/chromedriver
       - run:
+          name: Install Chrom
+          command: |
+            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
+      - run:
           name: Download CLI
           command: |
             mkdir sfdx
