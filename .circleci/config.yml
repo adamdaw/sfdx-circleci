@@ -75,7 +75,7 @@ jobs:
           command: |
             mkdir -p ~/jasmineTestResults
             sfdx force:lightning:test:run -a jasmineTests.app  -d ~/jasmineTestResults -r junit --wait 5
-      - store_test_reulsts:
+      - store_test_results:
           path: ~/jasmineTestResults 
       - run:
           name: Delete Useless Scratch Org
